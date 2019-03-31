@@ -40,7 +40,7 @@ app.param('action',(req,res,next,action)=>{
 
 
 app.post('/users',(req,res,next)=>{
-    console.log(req.body.pass)
+    //console.log(req.body.pass)
     res.json({"okay":"100","recorded":`${req.body.user}`})
 })
 
