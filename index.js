@@ -1,7 +1,8 @@
 'use strict'
 const express = require('express')
 const bodyp = require('body-parser')
-const sqlite = require('sqlite3')
+//const sqlite = require('sqlite3')
+const pg = require('pg')
 const app = express()
 //Set by express
 let webport = process.env.PORT || 8080;
