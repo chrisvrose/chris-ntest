@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test</title>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(()=>{
+            $("#impform").submit(e=>{
+                e.preventDefault();
+                $.ajax({
+                    url: '/users',
+                    method: 'post',
+                    dataType:'json',
+                    data: {"user": $("#USN").val(),pass: $("#PASS").val()},
+                    success: (data)=>{console.log(`${JSON.stringify(data)}`)}
+                })
+            })
+        })
+    </script>
+
+</head>
+
+<body>
+    <form id="impform">
+        <input name="USN" placeholder="USERNEM" type="text" id="USN"/>
+        <input name="PASS" placeholder="PASS" type="password" id="PASS"/>
+        <input type="submit" name="submit"></input>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "thttp",
+  "version": "1.0.0",
+  "description": "api",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "author": "Christopher",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "eslint": "^5.15.3",
+    "express": "^4.16.4",
+    "sqlite3": "^4.0.6"
+  }
+}
