@@ -3,7 +3,8 @@ const express = require('express')
 const bodyp = require('body-parser')
 const sqlite = require('sqlite3')
 const app = express()
-
+//Set by express
+const webport = process.env.PORT || 8080;
 
 app.use(bodyp.urlencoded({
     extended: true
@@ -67,4 +68,4 @@ app.use((err,req,res)=>{
     //res.end();
 })
 
-app.listen(8080);
+app.listen(webport);
