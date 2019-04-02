@@ -33,7 +33,7 @@ app.param('action',(req,res,next,action)=>{
             req.action = 'update'
         break;
         default:
-            next(throw new Error("NUU ;-;"))
+            next(new Error("NUU ;-;"))
 
     }
     next()
