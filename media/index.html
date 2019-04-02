@@ -10,7 +10,7 @@
                 e.preventDefault();
                 $.ajax({
                     url: '/users',
-                    method: 'post',
+                    method: 'put',
                     dataType:'json',
                     data: {"user": $("#USN").val(),pass: $("#PASS").val()},
                     success: (data)=>{console.log(`${JSON.stringify(data)}`)}

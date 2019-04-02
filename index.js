@@ -33,16 +33,24 @@ app.param('action',(req,res,next,action)=>{
             req.action = 'update'
         break;
         default:
-            req.action = 'lol'
+            next(throw new Error("NUU ;-;"))
 
     }
     next()
 })
 
 
-app.post('/users',(req,res,next)=>{
+
+//register user
+app.put('/users',(req,res,next)=>{
     //console.log(req.body.pass)
+    // Register to SQL
     res.json({"okay":"100","recorded":`${req.body.user}`})
+})
+
+//modify user data
+app.post('/users/:id/:action',(req,res,next)=>{
+    // Check action, and do it
 })
 
 app.get('/users/:id',(req,res,next)=>{
