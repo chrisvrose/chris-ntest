@@ -1,11 +1,20 @@
+/* eslint-disable no-console */
 'use strict'
 const express = require('express')
 const bodyp = require('body-parser')
 //const sqlite = require('sqlite3')
-const pg = require('pg')
+const {Client } = require('pg')
 const app = express()
 //Set by express
 let webport = process.env.PORT || 8080;
+const client = new Client({connectionString: `${process.env.DATABASE_URL}`|| null})
+console.log(`${process.env.DATABASE_URL || null}`);
+client.connect(e=>{
+    console.err(`Connection error : ${e} )`)
+})
+
+
+
 
 app.use(bodyp.urlencoded({
     extended: true
