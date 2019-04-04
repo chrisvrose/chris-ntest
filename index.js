@@ -16,7 +16,7 @@ client.connect(e=>{
 
 
 // Cleanup for now
-await client.end()
+client.end()
 
 
 app.use(bodyp.urlencoded({
