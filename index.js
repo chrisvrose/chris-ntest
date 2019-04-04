@@ -10,7 +10,7 @@ let webport = process.env.PORT || 8080;
 const client = new Client({connectionString: `${process.env.DATABASE_URL}`|| null})
 console.log(`${process.env.DATABASE_URL || null}`);
 client.connect(e=>{
-    console.err(`Connection error : ${e} )`)
+    console.log(`Connection error : ${e} )`)
 })
 
 
