@@ -8,12 +8,15 @@ const app = express()
 //Set by express
 let webport = process.env.PORT || 8080;
 const client = new Client({connectionString: `${process.env.DATABASE_URL}`|| null})
-console.log(`${process.env.DATABASE_URL || null}`);
+//console.log(`${process.env.DATABASE_URL || null}`);
 client.connect(e=>{
-    console.log(`Connection error : ${e} )`)
+    if(e)
+        console.log(`Connection error : ${e} )`)
 })
 
 
+// Cleanup for now
+await client.end()
 
 
 app.use(bodyp.urlencoded({
