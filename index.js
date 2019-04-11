@@ -72,20 +72,20 @@ app.get('/users/:id',(req,res,next)=>{
     })
 })
 
-app.get('/',express.static('media'));
+app.get('/*',express.static('static'));
 
 
 // 404
 app.use((req,res)=>{
     res.status(404).json({
-        "okay": `404`
+        "error": `404`
     })
 })
 
 
 // Error Handle
 app.use((err,req,res)=>{
-    res.status(500).json({"okay": `500`,"error": `${err}`})
+    res.status(500).json({"error": `${err}`})
     //res.end();
 })
 
