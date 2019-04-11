@@ -15,8 +15,8 @@ client.connect(e=>{
 })
 
 
-// Cleanup for now
-client.end()
+
+
 
 
 app.use(bodyp.urlencoded({
@@ -39,14 +39,14 @@ app.get("/favicon.ico", function(req, res) {
 app.param('action',(req,res,next,action)=>{
     switch(action){
         case 'list':
-            req.action = 'list'
+        req.action = 'list'
         break;
         case 'update':
-            req.action = 'update'
+        req.action = 'update'
         break;
         default:
-            next(new Error("NUU ;-;"))
-
+        next(new Error("NUU ;-;"))
+        
     }
     next()
 })
@@ -57,7 +57,15 @@ app.param('action',(req,res,next,action)=>{
 app.put('/users',(req,res,next)=>{
     //console.log(req.body.pass)
     // Register to SQL
-    res.json({"okay":"100","recorded":`${req.body.user}`})
+    client.query('SELECT count(*) from userdata',(err,res)=>{
+        if(err){
+            console.log("something went wrong:"+err)
+            res.json({"status":"100"})
+        }
+        else{
+            res.json({"okay":"100","recorded":`${res.rows[0]}`})
+        }
+    })
 })
 
 //modify user data
@@ -90,3 +98,5 @@ app.use((err,req,res)=>{
 })
 
 app.listen(webport);
+// Cleanup for now
+client.end();
