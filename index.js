@@ -60,7 +60,7 @@ app.put('/users',(req,res,next)=>{
     client.query('SELECT count(*) from userdata',(err,res)=>{
         if(err){
             console.log("something went wrong:"+err)
-            res.json({"status":"100"})
+            res.json({"status":"500"})
         }
         else{
             res.json({"okay":"100","recorded":`${res.rows[0]}`})
