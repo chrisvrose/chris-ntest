@@ -72,7 +72,7 @@ app.get('/users',(req,res,next)=>{
             next(err)
         }
         else{
-            res.json({"okay":"100","recorded":`${res.rows[0]}`})
+            res.json({"okay":"100","recorded":`${resp.rows[0]}`})
         }
     })
 })
