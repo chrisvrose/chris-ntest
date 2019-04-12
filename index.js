@@ -7,11 +7,15 @@ const {Client } = require('pg')
 const app = express()
 //Set by express
 let webport = process.env.PORT || 8080;
-const client = new Client({connectionString: `${process.env.DATABASE_URL}`|| null})
+const connectionString = {connectionString: process.env.DATABASE_URL || 'postgres://jjgqrykwegcbwn:2d072456a13e5d6fb09bd6bb04f1cef7d41d3be1d08566bf9f5d46720b9e83f7@ec2-54-221-236-144.compute-1.amazonaws.com:5432/d1b2ncse1reksf'}
+console.log('Trying:',connectionString.connectionString)
+const client = new Client(connectionString)
 //console.log(`${process.env.DATABASE_URL || null}`);
 client.connect(e=>{
     if(e)
         console.log(`Connection error : ${e} )`)
+    else
+        console.log(`Opened:`+e)
 })
 
 
@@ -61,7 +65,7 @@ app.put('/users',(req,res,next)=>{
 
 app.get('/users',(req,res,next)=>{
     // Register to SQL
-    client.query('SELECT count(*) from userdata',(err,resp)=>{
+    client.query('SELECT count(*) from userdata;',(err,resp)=>{
         if(err){
             console.log("something went wrong:"+err)
             res.json({"status":"500"})
@@ -105,4 +109,4 @@ app.use((err,req,res)=>{
 
 app.listen(webport);
 // Cleanup for now
-client.end();
+//client.end();
