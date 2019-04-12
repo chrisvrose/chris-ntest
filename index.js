@@ -56,6 +56,10 @@ app.param('action',(req,res,next,action)=>{
 //register user
 app.put('/users',(req,res,next)=>{
     //console.log(req.body.pass)
+    res.json({"error":"400"})
+})
+
+app.get('/users',(req,res,next)=>{
     // Register to SQL
     client.query('SELECT count(*) from userdata',(err,res)=>{
         if(err){
