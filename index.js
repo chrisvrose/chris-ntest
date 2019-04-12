@@ -61,7 +61,7 @@ app.put('/users',(req,res,next)=>{
 
 app.get('/users',(req,res,next)=>{
     // Register to SQL
-    client.query('SELECT count(*) from userdata',(err,res)=>{
+    client.query('SELECT count(*) from userdata',(err,resp)=>{
         if(err){
             console.log("something went wrong:"+err)
             res.json({"status":"500"})
