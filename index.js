@@ -61,6 +61,7 @@ app.put('/users',(req,res,next)=>{
         if(err){
             console.log("something went wrong:"+err)
             res.json({"status":"500"})
+            next(err)
         }
         else{
             res.json({"okay":"100","recorded":`${res.rows[0]}`})
@@ -79,8 +80,9 @@ app.get('/users/:id',(req,res,next)=>{
         "action": `${req.params.id}`
     })
 })
+app.get('/scripts',express.static('static/scripts'))
 
-app.get('/*',express.static('static'));
+app.get('/',express.static('static'));
 
 
 // 404
