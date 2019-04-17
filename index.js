@@ -59,7 +59,7 @@ app.param('action',(req,res,next,action)=>{
 
 //Registering
 app.put('/users',(req,res,next)=>{
-    console.log(req.body);res.json({recorded:"lol"});
+    console.log(req.body);
     client.query('Insert into userdata (name,pass) values ($1,$2);',[req.body.username,req.body.password],(err,resp)=>{
         if(err){
             next(err)
