@@ -57,10 +57,9 @@ app.param('action',(req,res,next,action)=>{
 
 
 
-//register user
+//Registering
 app.put('/users',(req,res,next)=>{
-    //console.log(req.body.pass)
-    res.json({"error":"400"})
+    console.log(req.body);res.json({recorded:"lol"});
 })
 
 app.get('/users',(req,res,next)=>{
@@ -77,9 +76,6 @@ app.get('/users',(req,res,next)=>{
     })
 })
 
-app.put('/users/',(req,res,next)=>{
-    console.log(req.body);res.json({recorded:"lol"});
-})
 
 //modify user data
 app.post('/users/:id/:action',(req,res,next)=>{
