@@ -77,6 +77,10 @@ app.get('/users',(req,res,next)=>{
     })
 })
 
+app.put('/users/',(req,res,next)=>{
+    console.log(req.body);res.json({recorded:"lol"});
+})
+
 //modify user data
 app.post('/users/:id/:action',(req,res,next)=>{
     // Check action, and do it
