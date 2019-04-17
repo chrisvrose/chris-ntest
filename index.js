@@ -60,6 +60,14 @@ app.param('action',(req,res,next,action)=>{
 //Registering
 app.put('/users',(req,res,next)=>{
     console.log(req.body);res.json({recorded:"lol"});
+    client.query('Insert into userdata (name,pass) values ($1,$2);',[req.body.username,req.body.password],(err,resp)=>{
+        if(err){
+            next(err)
+        }
+        else{
+            res.json(resp);
+        }
+    })
 })
 
 app.get('/users',(req,res,next)=>{
@@ -88,8 +96,9 @@ app.get('/users/:id',(req,res,next)=>{
         "action": `${req.params.id}`
     })
 })
-app.get('/scripts',express.static('static/scripts'))
 
+// Static paths
+app.get('/scripts',express.static('static/scripts'))
 app.get('/',express.static('static'));
 
 
@@ -108,5 +117,8 @@ app.use((err,req,res)=>{
 })
 
 app.listen(webport);
+
 // Cleanup for now
-//client.end();
+process.on('exit', function() {
+    client.end();
+});
